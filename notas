@@ -26,7 +26,7 @@ instalar sdk mercado pago "checkout pro"
 
     agregar mercado pago a index.json
 
-crear usuarios de prueba usando tu credencial de test de tu cuenta personal
+crear usuarios de prueba usando tu credencial de produccion de tu cuenta personal
 copiando el access token, salir de la cuenta
 
 ejecutar postman para crear 2 usuarios de prueba
