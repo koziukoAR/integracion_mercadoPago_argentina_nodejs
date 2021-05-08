@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercadopago node</title>
+</head>
+<body>
+   <div class="containder">
+       <h2 class="display-3">Detalle producto</h2>
+      <div class="row">
+          <div class="col-md-6 offset-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Remera</h3>
+                    </div>
+                    <div class="card-body">
+                        <img src="assets/f3.PNG" alt="foto producto" style="width:100%;">
+                        <hr>
+                        <h4>Descripcion</h4>
+                        <p>
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde reiciendis saepe eum itaque. Perspiciatis illum adipisci nisi dolorum laborum corporis minus odit accusamus unde asperiores!
+                        </p>
+                        <hr>
+                        <h4>Precio 2500 $</h4>
+                        <div>
+                            <form action="http://localhost:3001/checkout" method="POST">
+                                <input type="hidden" name="title" value ="remera corta">
+                                <input type="hidden" name="price" value ="1001">
+                                <input type="submit" value="comprar" class="btn btn-primary btn-block">
+                            </form>
+                        </div>
+                        <br><br><br>
+                    </div>
+                </div>
+          </div>
+      </div> 
+   </div> 
+</body>
+</html>

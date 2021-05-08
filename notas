@@ -1,0 +1,1022 @@
+tarjeta de prueba
+5031755734530604 11/25 123
+
+
+pago acreditado 
+https://www.mercadopago.com.ar/checkout/v1/payment/redirect/38d49964-005c-4706-8d83-f33f6285d00c/congrats/approved/?preference-id=749374809-17431876-1977-4055-8433-e473af8e85fd&p=36e66f1943e591281ff4b9a51b6d487d
+
+crear proyecto: npm init --yes
+
+para ver la pagina: http://localhost/mp-node/
+
+crear backend:  npm install express
+
+probar pagina: node src/index
+
+probar ruta /checkout en barra de direccion web: localhost:3001/checkout
+
+instalar monitor para cambios en tiempo real: npm install -D nodemon
+
+    "watch": "npx nodemon src/index" en archivo package.json
+
+ejecutar monitor desde consola: npm run watch    
+
+instalar sdk mercado pago "checkout pro"
+    npm install mercadopago
+
+    agregar mercado pago a index.json
+
+crear usuarios de prueba usando tu credencial de test de tu cuenta personal
+copiando el access token, salir de la cuenta
+
+ejecutar postman para crear 2 usuarios de prueba
+
+logueado con un usuario de prueba, copias las 
+credenciales de produccion en la variable access_token
+index.js
+
+crear la preferencia
+
+instalar libreria para obtener los campos del formulario: npm i body-parser
+
+------------------
+redirigir al init_ponit 
+
+mercadopago.preferences.create(preference)
+    .then(function(response){
+        console.log(response);
+        ////res.send('checkout 22');
+        res.redirect(response.body.init_ponit);
+--------------------------------
+
+init_point: 'https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-914c9946-40bf-45df-a16e-646e14d8c5a2',
+---------------------------------
+
+ya estamos por ir a la pagina que nos envie el init point o sandbox point
+asegurarse de que este el metodo post 
+
+<form action="http://localhost:3001/checkout" method="POST">
+
+
+
+el app.get /checkout pasarlo a app.post ahora que ya esta la preferencia
+json devuelto
+
+    expiration_date_from: null,
+    expiration_date_to: null,
+    expires: false,
+    external_reference: '',
+    id: '749328966-914c9946-40bf-45df-a16e-646e14d8c5a2',
+    init_point: 'https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-914c9946-40bf-45df-a16e-646e14d8c5a2',
+    internal_metadata: null,
+    items: [ [Object] ],
+    marketplace: 'NONE',
+    marketplace_fee: 0,
+    metadata: {},
+    notification_url: null,
+    operation_type: 'regular_payment',
+    payer: {
+      phone: [Object],
+      address: [Object],
+      email: '',
+      identification: [Object],
+      name: '',
+      surname: '',
+      date_created: null,
+      last_purchase: null
+    },
+    payment_methods: {
+      default_card_id: null,
+      default_payment_method_id: null,
+      excluded_payment_methods: [Array],
+      excluded_payment_types: [Array],
+      installments: null,
+      default_installments: null
+    },
+    processing_modes: null,
+    product_id: null,
+    redirect_urls: { failure: '', pending: '', success: '' },
+    sandbox_init_point: 'https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-914c9946-40bf-45df-a16e-646e14d8c5a2',
+    site_id: 'MLA',
+    shipments: { default_shipping_method: null, receiver_address: [Object] },
+    total_amount: null,
+    last_updated: null
+  },
+  response: {
+    additional_info: '',
+    auto_return: '',
+    back_urls: { failure: '', pending: '', success: '' },
+    binary_mode: false,
+    client_id: '2976847302278535',
+    collector_id: 749328966,
+    coupon_code: null,
+    coupon_labels: null,
+    date_created: '2021-04-29T17:56:54.574+00:00',
+    date_of_expiration: null,
+    expiration_date_from: null,
+    expiration_date_to: null,
+    expires: false,
+    external_reference: '',
+    id: '749328966-914c9946-40bf-45df-a16e-646e14d8c5a2',
+    init_point: 'https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-914c9946-40bf-45df-a16e-646e14d8c5a2',
+    internal_metadata: null,
+    items: [ [Object] ],
+    marketplace: 'NONE',
+    marketplace_fee: 0,
+    metadata: {},
+    notification_url: null,
+    operation_type: 'regular_payment',
+    payer: {
+      phone: [Object],
+      address: [Object],
+      email: '',
+      identification: [Object],
+      name: '',
+      surname: '',
+      date_created: null,
+      last_purchase: null
+    },
+    payment_methods: {
+      default_card_id: null,
+      default_payment_method_id: null,
+      excluded_payment_methods: [Array],
+      excluded_payment_types: [Array],
+      installments: null,
+      default_installments: null
+    },
+    processing_modes: null,
+    product_id: null,
+    redirect_urls: { failure: '', pending: '', success: '' },
+    sandbox_init_point: 'https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-914c9946-40bf-45df-a16e-646e14d8c5a2',
+    site_id: 'MLA',
+    shipments: { default_shipping_method: null, receiver_address: [Object] },
+    total_amount: null,
+    last_updated: null
+  },
+  status: 201,
+  idempotency: undefined,
+  pagination: undefined
+}
+mercadopagoResponse {
+  body: {
+    additional_info: '',
+    auto_return: '',
+    back_urls: { failure: '', pending: '', success: '' },
+    binary_mode: false,
+    client_id: '2976847302278535',
+    collector_id: 749328966,
+    coupon_code: null,
+    coupon_labels: null,
+    date_created: '2021-04-29T17:58:54.611+00:00',
+    date_of_expiration: null,
+    expiration_date_from: null,
+    expiration_date_to: null,
+    expires: false,
+    external_reference: '',
+    id: '749328966-edfbb2f2-6b64-4f9f-ac82-a6728f72443b',
+    init_point: 'https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-edfbb2f2-6b64-4f9f-ac82-a6728f72443b',
+    internal_metadata: null,
+    items: [ [Object] ],
+    marketplace: 'NONE',
+    marketplace_fee: 0,
+    metadata: {},
+    notification_url: null,
+    operation_type: 'regular_payment',
+    payer: {
+      phone: [Object],
+      address: [Object],
+      email: '',
+      identification: [Object],
+      name: '',
+      surname: '',
+      date_created: null,
+      last_purchase: null
+    },
+    payment_methods: {
+      default_card_id: null,
+      default_payment_method_id: null,
+      excluded_payment_methods: [Array],
+      excluded_payment_types: [Array],
+      installments: null,
+      default_installments: null
+    },
+    processing_modes: null,
+    product_id: null,
+    redirect_urls: { failure: '', pending: '', success: '' },
+    sandbox_init_point: 'https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-edfbb2f2-6b64-4f9f-ac82-a6728f72443b',
+    site_id: 'MLA',
+    shipments: { default_shipping_method: null, receiver_address: [Object] },
+    total_amount: null,
+    last_updated: null
+  },
+  response: {
+    additional_info: '',
+    auto_return: '',
+    back_urls: { failure: '', pending: '', success: '' },
+    binary_mode: false,
+    client_id: '2976847302278535',
+    collector_id: 749328966,
+    coupon_code: null,
+    coupon_labels: null,
+    date_created: '2021-04-29T17:58:54.611+00:00',
+    date_of_expiration: null,
+    expiration_date_from: null,
+    expiration_date_to: null,
+    expires: false,
+    external_reference: '',
+    id: '749328966-edfbb2f2-6b64-4f9f-ac82-a6728f72443b',
+    init_point: 'https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-edfbb2f2-6b64-4f9f-ac82-a6728f72443b',
+    internal_metadata: null,
+    items: [ [Object] ],
+    marketplace: 'NONE',
+    marketplace_fee: 0,
+    metadata: {},
+    notification_url: null,
+    operation_type: 'regular_payment',
+    payer: {
+      phone: [Object],
+      address: [Object],
+      email: '',
+      identification: [Object],
+      name: '',
+      surname: '',
+      date_created: null,
+      last_purchase: null
+    },
+    payment_methods: {
+      default_card_id: null,
+      default_payment_method_id: null,
+      excluded_payment_methods: [Array],
+      excluded_payment_types: [Array],
+      installments: null,
+      default_installments: null
+    },
+    processing_modes: null,
+    product_id: null,
+    redirect_urls: { failure: '', pending: '', success: '' },
+    sandbox_init_point: 'https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-edfbb2f2-6b64-4f9f-ac82-a6728f72443b',
+    site_id: 'MLA',
+    shipments: { default_shipping_method: null, receiver_address: [Object] },
+    total_amount: null,
+    last_updated: null
+  },
+  status: 201,
+  idempotency: undefined,
+  pagination: undefined
+}
+mercadopagoResponse {
+  body: {
+    additional_info: '',
+    auto_return: '',
+    back_urls: { failure: '', pending: '', success: '' },
+    binary_mode: false,
+    client_id: '2976847302278535',
+    collector_id: 749328966,
+    coupon_code: null,
+    coupon_labels: null,
+    date_created: '2021-04-29T18:00:54.631+00:00',
+    date_of_expiration: null,
+    expiration_date_from: null,
+    expiration_date_to: null,
+    expires: false,
+    external_reference: '',
+    id: '749328966-4fce0897-8561-40c3-8456-bfd5d7341c47',
+    init_point: 'https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-4fce0897-8561-40c3-8456-bfd5d7341c47',
+    internal_metadata: null,
+    items: [ [Object] ],
+    marketplace: 'NONE',
+    marketplace_fee: 0,
+    metadata: {},
+    notification_url: null,
+    operation_type: 'regular_payment',
+    payer: {
+      phone: [Object],
+      address: [Object],
+      email: '',
+      identification: [Object],
+      name: '',
+      surname: '',
+      date_created: null,
+      last_purchase: null
+    },
+    payment_methods: {
+      default_card_id: null,
+      default_payment_method_id: null,
+      excluded_payment_methods: [Array],
+      excluded_payment_types: [Array],
+      installments: null,
+      default_installments: null
+    },
+    processing_modes: null,
+    product_id: null,
+    redirect_urls: { failure: '', pending: '', success: '' },
+    sandbox_init_point: 'https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-4fce0897-8561-40c3-8456-bfd5d7341c47',
+    site_id: 'MLA',
+    shipments: { default_shipping_method: null, receiver_address: [Object] },
+    total_amount: null,
+    last_updated: null
+  },
+  response: {
+    additional_info: '',
+    auto_return: '',
+    back_urls: { failure: '', pending: '', success: '' },
+    binary_mode: false,
+    client_id: '2976847302278535',
+    collector_id: 749328966,
+    coupon_code: null,
+    coupon_labels: null,
+    date_created: '2021-04-29T18:00:54.631+00:00',
+    date_of_expiration: null,
+    expiration_date_from: null,
+    expiration_date_to: null,
+    expires: false,
+    external_reference: '',
+    id: '749328966-4fce0897-8561-40c3-8456-bfd5d7341c47',
+    init_point: 'https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-4fce0897-8561-40c3-8456-bfd5d7341c47',
+    internal_metadata: null,
+    items: [ [Object] ],
+    marketplace: 'NONE',
+    marketplace_fee: 0,
+    metadata: {},
+    notification_url: null,
+    operation_type: 'regular_payment',
+    payer: {
+      phone: [Object],
+      address: [Object],
+      email: '',
+      identification: [Object],
+      name: '',
+      surname: '',
+      date_created: null,
+      last_purchase: null
+    },
+    payment_methods: {
+      default_card_id: null,
+      default_payment_method_id: null,
+      excluded_payment_methods: [Array],
+      excluded_payment_types: [Array],
+      installments: null,
+      default_installments: null
+    },
+    processing_modes: null,
+    product_id: null,
+    redirect_urls: { failure: '', pending: '', success: '' },
+    sandbox_init_point: 'https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-4fce0897-8561-40c3-8456-bfd5d7341c47',
+    site_id: 'MLA',
+    shipments: { default_shipping_method: null, receiver_address: [Object] },
+    total_amount: null,
+    last_updated: null
+  },
+  status: 201,
+  idempotency: undefined,
+  pagination: undefined
+}
+mercadopagoResponse {
+  body: {
+    additional_info: '',
+    auto_return: '',
+    back_urls: { failure: '', pending: '', success: '' },
+    binary_mode: false,
+    client_id: '2976847302278535',
+    collector_id: 749328966,
+    coupon_code: null,
+    coupon_labels: null,
+    date_created: '2021-04-29T18:02:54.835+00:00',
+    date_of_expiration: null,
+    expiration_date_from: null,
+    expiration_date_to: null,
+    expires: false,
+    external_reference: '',
+    id: '749328966-b610be04-3d7f-47bd-a5d7-049ea04fc8e8',
+    init_point: 'https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-b610be04-3d7f-47bd-a5d7-049ea04fc8e8',
+    internal_metadata: null,
+    items: [ [Object] ],
+    marketplace: 'NONE',
+    marketplace_fee: 0,
+    metadata: {},
+    notification_url: null,
+    operation_type: 'regular_payment',
+    payer: {
+      phone: [Object],
+      address: [Object],
+      email: '',
+      identification: [Object],
+      name: '',
+      surname: '',
+      date_created: null,
+      last_purchase: null
+    },
+    payment_methods: {
+      default_card_id: null,
+      default_payment_method_id: null,
+      excluded_payment_methods: [Array],
+      excluded_payment_types: [Array],
+      installments: null,
+      default_installments: null
+    },
+    processing_modes: null,
+    product_id: null,
+    redirect_urls: { failure: '', pending: '', success: '' },
+    sandbox_init_point: 'https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-b610be04-3d7f-47bd-a5d7-049ea04fc8e8',
+    site_id: 'MLA',
+    shipments: { default_shipping_method: null, receiver_address: [Object] },
+    total_amount: null,
+    last_updated: null
+  },
+  response: {
+    additional_info: '',
+    auto_return: '',
+    back_urls: { failure: '', pending: '', success: '' },
+    binary_mode: false,
+    client_id: '2976847302278535',
+    collector_id: 749328966,
+    coupon_code: null,
+    coupon_labels: null,
+    date_created: '2021-04-29T18:02:54.835+00:00',
+    date_of_expiration: null,
+    expiration_date_from: null,
+    expiration_date_to: null,
+    expires: false,
+    external_reference: '',
+    id: '749328966-b610be04-3d7f-47bd-a5d7-049ea04fc8e8',
+    init_point: 'https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-b610be04-3d7f-47bd-a5d7-049ea04fc8e8',
+    internal_metadata: null,
+    items: [ [Object] ],
+    marketplace: 'NONE',
+    marketplace_fee: 0,
+    metadata: {},
+    notification_url: null,
+    operation_type: 'regular_payment',
+    payer: {
+      phone: [Object],
+      address: [Object],
+      email: '',
+      identification: [Object],
+      name: '',
+      surname: '',
+      date_created: null,
+      last_purchase: null
+    },
+    payment_methods: {
+      default_card_id: null,
+      default_payment_method_id: null,
+      excluded_payment_methods: [Array],
+      excluded_payment_types: [Array],
+      installments: null,
+      default_installments: null
+    },
+    processing_modes: null,
+    product_id: null,
+    redirect_urls: { failure: '', pending: '', success: '' },
+    sandbox_init_point: 'https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-b610be04-3d7f-47bd-a5d7-049ea04fc8e8',
+    site_id: 'MLA',
+    shipments: { default_shipping_method: null, receiver_address: [Object] },
+    total_amount: null,
+    last_updated: null
+  },
+  status: 201,
+  idempotency: undefined,
+  pagination: undefined
+}
+mercadopagoResponse {
+  body: {
+    additional_info: '',
+    auto_return: '',
+    back_urls: { failure: '', pending: '', success: '' },
+    binary_mode: false,
+    client_id: '2976847302278535',
+    collector_id: 749328966,
+    coupon_code: null,
+    coupon_labels: null,
+    date_created: '2021-04-29T18:04:54.714+00:00',
+    date_of_expiration: null,
+    expiration_date_from: null,
+    expiration_date_to: null,
+    expires: false,
+    external_reference: '',
+    id: '749328966-a670cbfb-edc2-43ca-9086-df4db7b1255d',
+    init_point: 'https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-a670cbfb-edc2-43ca-9086-df4db7b1255d',
+    internal_metadata: null,
+    items: [ [Object] ],
+    marketplace: 'NONE',
+    marketplace_fee: 0,
+    metadata: {},
+    notification_url: null,
+    operation_type: 'regular_payment',
+    payer: {
+      phone: [Object],
+      address: [Object],
+      email: '',
+      identification: [Object],
+      name: '',
+      surname: '',
+      date_created: null,
+      last_purchase: null
+    },
+    payment_methods: {
+      default_card_id: null,
+      default_payment_method_id: null,
+      excluded_payment_methods: [Array],
+      excluded_payment_types: [Array],
+      installments: null,
+      default_installments: null
+    },
+    processing_modes: null,
+    product_id: null,
+    redirect_urls: { failure: '', pending: '', success: '' },
+    sandbox_init_point: 'https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-a670cbfb-edc2-43ca-9086-df4db7b1255d',
+    site_id: 'MLA',
+    shipments: { default_shipping_method: null, receiver_address: [Object] },
+    total_amount: null,
+    last_updated: null
+  },
+  response: {
+    additional_info: '',
+    auto_return: '',
+    back_urls: { failure: '', pending: '', success: '' },
+    binary_mode: false,
+    client_id: '2976847302278535',
+    collector_id: 749328966,
+    coupon_code: null,
+    coupon_labels: null,
+    date_created: '2021-04-29T18:04:54.714+00:00',
+    date_of_expiration: null,
+    expiration_date_from: null,
+    expiration_date_to: null,
+    expires: false,
+    external_reference: '',
+    id: '749328966-a670cbfb-edc2-43ca-9086-df4db7b1255d',
+    init_point: 'https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-a670cbfb-edc2-43ca-9086-df4db7b1255d',
+    internal_metadata: null,
+    items: [ [Object] ],
+    marketplace: 'NONE',
+    marketplace_fee: 0,
+    metadata: {},
+    notification_url: null,
+    operation_type: 'regular_payment',
+    payer: {
+      phone: [Object],
+      address: [Object],
+      email: '',
+      identification: [Object],
+      name: '',
+      surname: '',
+      date_created: null,
+      last_purchase: null
+    },
+    payment_methods: {
+      default_card_id: null,
+      default_payment_method_id: null,
+      excluded_payment_methods: [Array],
+      excluded_payment_types: [Array],
+      installments: null,
+      default_installments: null
+    },
+    processing_modes: null,
+    product_id: null,
+    redirect_urls: { failure: '', pending: '', success: '' },
+    sandbox_init_point: 'https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-a670cbfb-edc2-43ca-9086-df4db7b1255d',
+    site_id: 'MLA',
+    shipments: { default_shipping_method: null, receiver_address: [Object] },
+    total_amount: null,
+    last_updated: null
+  },
+  status: 201,
+  idempotency: undefined,
+  pagination: undefined
+}
+mercadopagoResponse {
+  body: {
+    additional_info: '',
+    auto_return: '',
+    back_urls: { failure: '', pending: '', success: '' },
+    binary_mode: false,
+    client_id: '2976847302278535',
+    collector_id: 749328966,
+    coupon_code: null,
+    coupon_labels: null,
+    date_created: '2021-04-29T18:06:54.955+00:00',
+    date_of_expiration: null,
+    expiration_date_from: null,
+    expiration_date_to: null,
+    expires: false,
+    external_reference: '',
+    id: '749328966-c5a5032b-2e6d-4e7c-97b2-20f7d14e8e54',
+    init_point: 'https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-c5a5032b-2e6d-4e7c-97b2-20f7d14e8e54',
+    internal_metadata: null,
+    items: [ [Object] ],
+    marketplace: 'NONE',
+    marketplace_fee: 0,
+    metadata: {},
+    notification_url: null,
+    operation_type: 'regular_payment',
+    payer: {
+      phone: [Object],
+      address: [Object],
+      email: '',
+      identification: [Object],
+      name: '',
+      surname: '',
+      date_created: null,
+      last_purchase: null
+    },
+    payment_methods: {
+      default_card_id: null,
+      default_payment_method_id: null,
+      excluded_payment_methods: [Array],
+      excluded_payment_types: [Array],
+      installments: null,
+      default_installments: null
+    },
+    processing_modes: null,
+    product_id: null,
+    redirect_urls: { failure: '', pending: '', success: '' },
+    sandbox_init_point: 'https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-c5a5032b-2e6d-4e7c-97b2-20f7d14e8e54',
+    site_id: 'MLA',
+    shipments: { default_shipping_method: null, receiver_address: [Object] },
+    total_amount: null,
+    last_updated: null
+  },
+  response: {
+    additional_info: '',
+    auto_return: '',
+    back_urls: { failure: '', pending: '', success: '' },
+    binary_mode: false,
+    client_id: '2976847302278535',
+    collector_id: 749328966,
+    coupon_code: null,
+    coupon_labels: null,
+    date_created: '2021-04-29T18:06:54.955+00:00',
+    date_of_expiration: null,
+    expiration_date_from: null,
+    expiration_date_to: null,
+    expires: false,
+    external_reference: '',
+    id: '749328966-c5a5032b-2e6d-4e7c-97b2-20f7d14e8e54',
+    init_point: 'https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-c5a5032b-2e6d-4e7c-97b2-20f7d14e8e54',
+    internal_metadata: null,
+    items: [ [Object] ],
+    marketplace: 'NONE',
+    marketplace_fee: 0,
+    metadata: {},
+    notification_url: null,
+    operation_type: 'regular_payment',
+    payer: {
+      phone: [Object],
+      address: [Object],
+      email: '',
+      identification: [Object],
+      name: '',
+      surname: '',
+      date_created: null,
+      last_purchase: null
+    },
+    payment_methods: {
+      default_card_id: null,
+      default_payment_method_id: null,
+      excluded_payment_methods: [Array],
+      excluded_payment_types: [Array],
+      installments: null,
+      default_installments: null
+    },
+    processing_modes: null,
+    product_id: null,
+    redirect_urls: { failure: '', pending: '', success: '' },
+    sandbox_init_point: 'https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-c5a5032b-2e6d-4e7c-97b2-20f7d14e8e54',
+    site_id: 'MLA',
+    shipments: { default_shipping_method: null, receiver_address: [Object] },
+    total_amount: null,
+    last_updated: null
+  },
+  status: 201,
+  idempotency: undefined,
+  pagination: undefined
+}
+mercadopagoResponse {
+  body: {
+    additional_info: '',
+    auto_return: '',
+    back_urls: { failure: '', pending: '', success: '' },
+    binary_mode: false,
+    client_id: '2976847302278535',
+    collector_id: 749328966,
+    coupon_code: null,
+    coupon_labels: null,
+    date_created: '2021-04-29T18:08:54.693+00:00',
+    date_of_expiration: null,
+    expiration_date_from: null,
+    expiration_date_to: null,
+    expires: false,
+    external_reference: '',
+    id: '749328966-f6074f4f-8cd0-47ae-a9cb-7d764d6e90c4',
+    init_point: 'https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-f6074f4f-8cd0-47ae-a9cb-7d764d6e90c4',
+    internal_metadata: null,
+    items: [ [Object] ],
+    marketplace: 'NONE',
+    marketplace_fee: 0,
+    metadata: {},
+    notification_url: null,
+    operation_type: 'regular_payment',
+    payer: {
+      phone: [Object],
+      address: [Object],
+      email: '',
+      identification: [Object],
+      name: '',
+      surname: '',
+      date_created: null,
+      last_purchase: null
+    },
+    payment_methods: {
+      default_card_id: null,
+      default_payment_method_id: null,
+      excluded_payment_methods: [Array],
+      excluded_payment_types: [Array],
+      installments: null,
+      default_installments: null
+    },
+    processing_modes: null,
+    product_id: null,
+    redirect_urls: { failure: '', pending: '', success: '' },
+    sandbox_init_point: 'https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-f6074f4f-8cd0-47ae-a9cb-7d764d6e90c4',
+    site_id: 'MLA',
+    shipments: { default_shipping_method: null, receiver_address: [Object] },
+    total_amount: null,
+    last_updated: null
+  },
+  response: {
+    additional_info: '',
+    auto_return: '',
+    back_urls: { failure: '', pending: '', success: '' },
+    binary_mode: false,
+    client_id: '2976847302278535',
+    collector_id: 749328966,
+    coupon_code: null,
+    coupon_labels: null,
+    date_created: '2021-04-29T18:08:54.693+00:00',
+    date_of_expiration: null,
+    expiration_date_from: null,
+    expiration_date_to: null,
+    expires: false,
+    external_reference: '',
+    id: '749328966-f6074f4f-8cd0-47ae-a9cb-7d764d6e90c4',
+    init_point: 'https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-f6074f4f-8cd0-47ae-a9cb-7d764d6e90c4',
+    internal_metadata: null,
+    items: [ [Object] ],
+    marketplace: 'NONE',
+    marketplace_fee: 0,
+    metadata: {},
+    notification_url: null,
+    operation_type: 'regular_payment',
+    payer: {
+      phone: [Object],
+      address: [Object],
+      email: '',
+      identification: [Object],
+      name: '',
+      surname: '',
+      date_created: null,
+      last_purchase: null
+    },
+    payment_methods: {
+      default_card_id: null,
+      default_payment_method_id: null,
+      excluded_payment_methods: [Array],
+      excluded_payment_types: [Array],
+      installments: null,
+      default_installments: null
+    },
+    processing_modes: null,
+    product_id: null,
+    redirect_urls: { failure: '', pending: '', success: '' },
+    sandbox_init_point: 'https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-f6074f4f-8cd0-47ae-a9cb-7d764d6e90c4',
+    site_id: 'MLA',
+    shipments: { default_shipping_method: null, receiver_address: [Object] },
+    total_amount: null,
+    last_updated: null
+  },
+  status: 201,
+  idempotency: undefined,
+  pagination: undefined
+}
+mercadopagoResponse {
+  body: {
+    additional_info: '',
+    auto_return: '',
+    back_urls: { failure: '', pending: '', success: '' },
+    binary_mode: false,
+    client_id: '2976847302278535',
+    collector_id: 749328966,
+    coupon_code: null,
+    coupon_labels: null,
+    date_created: '2021-04-29T18:10:54.747+00:00',
+    date_of_expiration: null,
+    expiration_date_from: null,
+    expiration_date_to: null,
+    expires: false,
+    external_reference: '',
+    id: '749328966-0daa66cb-9ae4-45d0-9f82-a975bb4c159b',
+    init_point: 'https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-0daa66cb-9ae4-45d0-9f82-a975bb4c159b',
+    internal_metadata: null,
+    items: [ [Object] ],
+    marketplace: 'NONE',
+    marketplace_fee: 0,
+    metadata: {},
+    notification_url: null,
+    operation_type: 'regular_payment',
+    payer: {
+      phone: [Object],
+      address: [Object],
+      email: '',
+      identification: [Object],
+      name: '',
+      surname: '',
+      date_created: null,
+      last_purchase: null
+    },
+    payment_methods: {
+      default_card_id: null,
+      default_payment_method_id: null,
+      excluded_payment_methods: [Array],
+      excluded_payment_types: [Array],
+      installments: null,
+      default_installments: null
+    },
+    processing_modes: null,
+    product_id: null,
+    redirect_urls: { failure: '', pending: '', success: '' },
+    sandbox_init_point: 'https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-0daa66cb-9ae4-45d0-9f82-a975bb4c159b',
+    site_id: 'MLA',
+    shipments: { default_shipping_method: null, receiver_address: [Object] },
+    total_amount: null,
+    last_updated: null
+  },
+  response: {
+    additional_info: '',
+    auto_return: '',
+    back_urls: { failure: '', pending: '', success: '' },
+    binary_mode: false,
+    client_id: '2976847302278535',
+    collector_id: 749328966,
+    coupon_code: null,
+    coupon_labels: null,
+    date_created: '2021-04-29T18:10:54.747+00:00',
+    date_of_expiration: null,
+    expiration_date_from: null,
+    expiration_date_to: null,
+    expires: false,
+    external_reference: '',
+    id: '749328966-0daa66cb-9ae4-45d0-9f82-a975bb4c159b',
+    init_point: 'https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-0daa66cb-9ae4-45d0-9f82-a975bb4c159b',
+    internal_metadata: null,
+    items: [ [Object] ],
+    marketplace: 'NONE',
+    marketplace_fee: 0,
+    metadata: {},
+    notification_url: null,
+    operation_type: 'regular_payment',
+    payer: {
+      phone: [Object],
+      address: [Object],
+      email: '',
+      identification: [Object],
+      name: '',
+      surname: '',
+      date_created: null,
+      last_purchase: null
+    },
+    payment_methods: {
+      default_card_id: null,
+      default_payment_method_id: null,
+      excluded_payment_methods: [Array],
+      excluded_payment_types: [Array],
+      installments: null,
+      default_installments: null
+    },
+    processing_modes: null,
+    product_id: null,
+    redirect_urls: { failure: '', pending: '', success: '' },
+    sandbox_init_point: 'https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-0daa66cb-9ae4-45d0-9f82-a975bb4c159b',
+    site_id: 'MLA',
+    shipments: { default_shipping_method: null, receiver_address: [Object] },
+    total_amount: null,
+    last_updated: null
+  },
+  status: 201,
+  idempotency: undefined,
+  pagination: undefined
+}
+mercadopagoResponse {
+  body: {
+    additional_info: '',
+    auto_return: '',
+    back_urls: { failure: '', pending: '', success: '' },
+    binary_mode: false,
+    client_id: '2976847302278535',
+    collector_id: 749328966,
+    coupon_code: null,
+    coupon_labels: null,
+    date_created: '2021-04-29T18:12:54.891+00:00',
+    date_of_expiration: null,
+    expiration_date_from: null,
+    expiration_date_to: null,
+    expires: false,
+    external_reference: '',
+    id: '749328966-adcbcd95-240b-4c9d-9506-654bc5d4f726',
+    init_point: 'https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-adcbcd95-240b-4c9d-9506-654bc5d4f726',
+    internal_metadata: null,
+    items: [ [Object] ],
+    marketplace: 'NONE',
+    marketplace_fee: 0,
+    metadata: {},
+    notification_url: null,
+    operation_type: 'regular_payment',
+    payer: {
+      phone: [Object],
+      address: [Object],
+      email: '',
+      identification: [Object],
+      name: '',
+      surname: '',
+      date_created: null,
+      last_purchase: null
+    },
+    payment_methods: {
+      default_card_id: null,
+      default_payment_method_id: null,
+      excluded_payment_methods: [Array],
+      excluded_payment_types: [Array],
+      installments: null,
+      default_installments: null
+    },
+    processing_modes: null,
+    product_id: null,
+    redirect_urls: { failure: '', pending: '', success: '' },
+    sandbox_init_point: 'https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-adcbcd95-240b-4c9d-9506-654bc5d4f726',
+    site_id: 'MLA',
+    shipments: { default_shipping_method: null, receiver_address: [Object] },
+    total_amount: null,
+    last_updated: null
+  },
+  response: {
+    additional_info: '',
+    auto_return: '',
+    back_urls: { failure: '', pending: '', success: '' },
+    binary_mode: false,
+    client_id: '2976847302278535',
+    collector_id: 749328966,
+    coupon_code: null,
+    coupon_labels: null,
+    date_created: '2021-04-29T18:12:54.891+00:00',
+    date_of_expiration: null,
+    expiration_date_from: null,
+    expiration_date_to: null,
+    expires: false,
+    external_reference: '',
+    id: '749328966-adcbcd95-240b-4c9d-9506-654bc5d4f726',
+    init_point: 'https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-adcbcd95-240b-4c9d-9506-654bc5d4f726',
+    internal_metadata: null,
+    items: [ [Object] ],
+    marketplace: 'NONE',
+    marketplace_fee: 0,
+    metadata: {},
+    notification_url: null,
+    operation_type: 'regular_payment',
+    payer: {
+      phone: [Object],
+      address: [Object],
+      email: '',
+      identification: [Object],
+      name: '',
+      surname: '',
+      date_created: null,
+      last_purchase: null
+    },
+    payment_methods: {
+      default_card_id: null,
+      default_payment_method_id: null,
+      excluded_payment_methods: [Array],
+      excluded_payment_types: [Array],
+      installments: null,
+      default_installments: null
+    },
+    processing_modes: null,
+    product_id: null,
+    redirect_urls: { failure: '', pending: '', success: '' },
+    sandbox_init_point: 'https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=749328966-adcbcd95-240b-4c9d-9506-654bc5d4f726',
+    site_id: 'MLA',
+    shipments: { default_shipping_method: null, receiver_address: [Object] },
+    total_amount: null,
+    last_updated: null
+  },
+  status: 201,
+  idempotency: undefined,
+  pagination: undefined
+}
+
+
+
+
+
+
+

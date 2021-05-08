@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercadopago node</title>
+</head>
+<body>
+   <div class="containder">
+       <h2 class="display-3"></h2>
+      <div class="row">
+          <div class="col-md-6 offset-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>
+
+                            <!-- 
+                             collection_id      =14713227440
+                            &collection_status  =approved
+                            &payment_id         =14713227440
+                            &status             =approved
+                            &external_reference =koziuko@gmail.com
+                            &payment_type       =credit_card
+                            &merchant_order_id  =2627755544
+                            &preference_id      =749374809-fc8eb787-53ea-4e68-8270-25031f35e75b
+                            &site_id            =MLA
+                            &processing_mode    =aggregator
+                            &merchant_account_id=null 
+                            -->
+                            
+                            <script type="text/javascript">
+                                const queryString = window.location.search;
+                                const urlParams = new URLSearchParams(queryString);
+                                const product = urlParams.get('collection_status');
+                                const _payment_id         =urlParams.get('payment_id');
+                                const _status             =urlParams.get('status');
+                                const _external_reference =urlParams.get('external_reference');
+                                const _payment_type       =urlParams.get('payment_type');
+                                const _merchant_order_id  =urlParams.get('merchant_order_id');
+                                const _preference_id      =urlParams.get('preference_id');
+                                const _site_id            =urlParams.get('site_id');
+                                const _processing_mode    =urlParams.get('processing_mode');
+                                const _merchant_account_id=urlParams.get('merchant_account_id');
+
+                                alert('id de pago: '+_payment_id+' metodo de pago: '+_payment_type+' referencia externa: '+_external_reference);
+                                
+                            </script>
+                    
+
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <img src="assets/success.PNG" alt="foto producto" style="width:100%;">
+                        <hr>
+                        <h4></h4>
+                        <p>
+                            
+                        </p>
+                        <hr>
+                        <h4></h4>
+                        <div>
+                            <form action="http://localhost/mp-node/" method="get"> 
+                            
+                                <input type="hidden" name="titles" value ="">
+                                <input type="hidden" name="prices" value ="">
+                                <input type="submit" value="volver" class="btn btn-primary btn-block">
+                            </form>
+                        </div>
+                        <br><br><br>
+                    </div>
+                </div>
+          </div>
+      </div> 
+   </div> 
+</body>
+</html>
